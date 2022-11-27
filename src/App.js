@@ -1,20 +1,17 @@
-import { useEffect, useReducer, useState } from 'react';
-import './App.css';
-import Table from './components/Table';
-import Coin from './components/Coin'
-import Pagination from './components/Pagination'
+import { useEffect, useState } from 'react';
+import Main from './components/Main';
 import Header from './components/Header';
+import Footer from './components/Footer';
 
 function App() {
   const [coins, setCoins] = useState([])
   const [loading, setLoading] = useState(false)
   const [currentPage, setCurrentPage] = useState(1)
-  const [coinsPerPage] = useState(10)
+  const [coinsPerPage, setCoinsPerPage] = useState(10)
 
   useEffect(() => {
+    setLoading(true)
     const fetchCoins = async () => {
-      setLoading(true)
-
       const url = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd"
       const response = await fetch(url)
       const data = await response.json()
@@ -28,22 +25,27 @@ function App() {
   const indexOfFirstCoin = indexOfLastCoin - coinsPerPage
   const currentCoins = coins.slice(indexOfFirstCoin, indexOfLastCoin)
 
-  const paginate = (pageNumber) => setCurrentPage(pageNumber)
-
-  // const nextPage = () => {
-  //   if (currentPage !== coins.length / coinsPerPage) setCurrentPage(prevState => prevState + 1)
-  // }
-  const nextPage = () => setCurrentPage(prevState => prevState + 1)
-  const prevPage = () => setCurrentPage(prevState => prevState - 1)
+  if (loading) {
+    return (
+      <div className='h-screen w-full flex items-center justify-center bg-neutral-900'>
+        <div className='border-8 border-gray-500 border-t-8 border-t-gray-800 rounded-[50%] h-32 w-32 overflow-hidden animate-spin'></div>
+      </div>
+    )
+  }
 
   return (
-    <div className="p-4 lg:px-10 bg-black min-h-screen">
+    <div className="px-4 md:px-10 lg:px-60 bg-neutral-900 min-h-screen flex flex-col overflow-y-hidden">
       <Header />
-      <main>
-        <Table coins={currentCoins} loading={loading} totalCoins={coins.length} coinsPerPage={coinsPerPage} paginate={paginate} currentPage={currentPage} nextPage={nextPage} prevPage={prevPage} />
-        <Coin coins={currentCoins} loading={loading} />
-        {!loading && <Pagination totalCoins={coins.length} coinsPerPage={coinsPerPage} paginate={paginate} currentPage={currentPage} nextPage={nextPage} prevPage={prevPage} />}
-      </main>
+      <Main
+        coins={currentCoins}
+        loading={loading}
+        totalCoins={coins.length}
+        coinsPerPage={coinsPerPage}
+        currentPage={currentPage}
+        setCoinsPerPage={setCoinsPerPage}
+        setCurrentPage={setCurrentPage}
+      />
+      <Footer />
     </div>
   );
 }
