@@ -30,7 +30,7 @@ const Table = (props) => {
             <th className="w-40 p-4">Circulating Supply</th>
             <th className="w-40 p-4">Total Supply</th>
             <th className="w-40 p-4">Max Supply</th>
-            <th className="w-28 p-4 py-1">Last Updated</th>
+            <th className="w-32 p-4 py-1">Last Updated</th>
           </tr>
         </thead>
         <tbody>
