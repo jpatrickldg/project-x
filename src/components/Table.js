@@ -11,26 +11,26 @@ const Table = (props) => {
       <table className="table-fixed w-full text-sm text-left text-gray-200">
         <thead className="text-xs uppercase text-white border-b border-t border-gray-700">
           <tr className="text-right">
-            <th className="text-left w-10 p-4 sticky left-0 top-0 bg-neutral-900 z-10">#</th>
-            <th className="text-left p-4 w-36 md:w-48 lg:w-64 sticky left-10 top-0 bg-neutral-900 z-10">Coin</th>
-            <th className="w-28 p-4 sticky top-0 bg-neutral-900">Price</th>
-            <th className="w-20 p-4 sticky top-0 bg-neutral-900">24h</th>
-            <th className="w-20 p-4 sticky top-0 bg-neutral-900">24h %</th>
-            <th className="w-24 p-4 sticky top-0 bg-neutral-900">24h High</th>
-            <th className="w-24 p-4 sticky top-0 bg-neutral-900">24h Low</th>
-            <th className="w-28 p-4 sticky top-0 bg-neutral-900">ATH</th>
-            <th className="w-24 p-4 sticky top-0 bg-neutral-900">ATH Date</th>
-            <th className="w-20 p-4 sticky top-0 bg-neutral-900">ATH %</th>
-            <th className="w-20 p-4 sticky top-0 bg-neutral-900">ATL</th>
-            <th className="w-28 p-4 sticky top-0 bg-neutral-900">ATL Date</th>
-            <th className="w-32 p-4 sticky top-0 bg-neutral-900">ATL %</th>
-            <th className="w-36 p-4 sticky top-0 bg-neutral-900">Total Volume</th>
-            <th className="w-40 p-4 sticky top-0 bg-neutral-900">Market Cap</th>
-            <th className="w-40 p-4 sticky top-0 bg-neutral-900">Fully Diluted Val</th>
-            <th className="w-40 p-4 sticky top-0 bg-neutral-900">Circulating Supply</th>
-            <th className="w-40 p-4 sticky top-0 bg-neutral-900">Total Supply</th>
-            <th className="w-40 p-4 sticky top-0 bg-neutral-900">Max Supply</th>
-            <th className="w-28 p-4 py-1 sticky top-0 bg-neutral-900">Last Updated</th>
+            <th className="text-left w-10 p-4 sticky left-0 bg-neutral-900 z-10">#</th>
+            <th className="text-left p-4 w-36 md:w-48 lg:w-64 sticky left-10 bg-neutral-900 z-10">Coin</th>
+            <th className="w-28 p-4">Price</th>
+            <th className="w-20 p-4">24h</th>
+            <th className="w-20 p-4">24h %</th>
+            <th className="w-24 p-4">24h High</th>
+            <th className="w-24 p-4">24h Low</th>
+            <th className="w-28 p-4">ATH</th>
+            <th className="w-24 p-4">ATH Date</th>
+            <th className="w-20 p-4">ATH %</th>
+            <th className="w-20 p-4">ATL</th>
+            <th className="w-28 p-4">ATL Date</th>
+            <th className="w-32 p-4">ATL %</th>
+            <th className="w-36 p-4">Total Volume</th>
+            <th className="w-40 p-4">Market Cap</th>
+            <th className="w-40 p-4">Fully Diluted Val</th>
+            <th className="w-40 p-4">Circulating Supply</th>
+            <th className="w-40 p-4">Total Supply</th>
+            <th className="w-40 p-4">Max Supply</th>
+            <th className="w-28 p-4 py-1">Last Updated</th>
           </tr>
         </thead>
         <tbody>
