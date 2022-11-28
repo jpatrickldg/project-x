@@ -2,12 +2,14 @@ import { useEffect, useState } from 'react';
 import Main from './components/Main';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import ErrorMessage from './components/ErrorMessage';
 
 function App() {
   const [coins, setCoins] = useState([])
   const [loading, setLoading] = useState(false)
   const [currentPage, setCurrentPage] = useState(1)
   const [coinsPerPage, setCoinsPerPage] = useState(10)
+  const [error, setError] = useState("")
 
   useEffect(() => {
     setLoading(true)
@@ -15,7 +17,12 @@ function App() {
       const url = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd"
       const response = await fetch(url)
       const data = await response.json()
-      setCoins(data)
+
+      if (response.ok) {
+        setCoins(data)
+      } else {
+        setError(data.error)
+      }
       setLoading(false)
     }
     fetchCoins()
@@ -33,8 +40,14 @@ function App() {
     )
   }
 
+  if (error) {
+    return (
+      <ErrorMessage error={error} />
+    )
+  }
+
   return (
-    <div className="px-4 md:px-10 lg:px-60 bg-neutral-900 min-h-screen flex flex-col overflow-y-hidden">
+    <div className="px-4 md:px-10 lg:px-60 bg-neutral-900 min-h-screen flex flex-col">
       <Header />
       <Main
         coins={currentCoins}

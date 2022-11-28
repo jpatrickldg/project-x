@@ -1,3 +1,5 @@
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+
 const Pagination = (props) => {
 
   const pageNumbers = []
@@ -10,13 +12,13 @@ const Pagination = (props) => {
 
   return (
     <nav className="text-gray-200 font-semibold">
-      <ul className="inline-flex items-center">
+      <ul className="flex items-center">
         <li>
           <button
             onClick={prevPage}
             disabled={props.currentPage === pageNumbers[0] ? true : false}
-            className={`p-1 mr-2 rounded-md hover:bg-neutral-600 ${props.currentPage === pageNumbers[0] && "hover:bg-transparent text-gray-500"}`}>
-            <svg aria-hidden="true" className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clipRule="evenodd"></path></svg>
+            className={`text-center w-8 h-7 mr-1 rounded-md hover:bg-neutral-600 ${props.currentPage === pageNumbers[0] && "hover:bg-transparent text-gray-500"}`}>
+            <FaChevronLeft className='mx-auto' />
           </button>
         </li>
         {pageNumbers.map(number => (
@@ -27,12 +29,13 @@ const Pagination = (props) => {
             >{number}</button>
           </li>
         ))}
+        <li className='w-8 py-1 text-sm bg-blue-600 rounded-md text-center md:hidden'>{props.currentPage}</li>
         <li>
           <button
             onClick={nextPage}
             disabled={props.currentPage === pageNumbers[pageNumbers.length - 1] ? true : false}
-            className={`p-1 ml-1 rounded-md hover:bg-neutral-600 ${props.currentPage === pageNumbers[pageNumbers.length - 1] && "hover:bg-transparent text-gray-500"}`}>
-            <svg aria-hidden="true" className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd"></path></svg>
+            className={`w-8 h-7 ml-1 rounded-md hover:bg-neutral-600 ${props.currentPage === pageNumbers[pageNumbers.length - 1] && "hover:bg-transparent text-gray-500"}`}>
+            <FaChevronRight className='mx-auto' />
           </button>
         </li>
       </ul>
